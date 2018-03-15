@@ -1,0 +1,18 @@
+#https://tutorials.technology/tutorials/59-Start-a-flask-project-from-zero-building-api-rest.html
+#https://books.google.com.br/books?id=5p0bCwAAQBAJ&pg=PA10&lpg=PA10&dq=column+tipos+sqlalchemy&source=bl&ots=u5XcGNY-XC&sig=jepTiKqQg3PDY-M_3PxCldCHdnQ&hl=pt-BR&sa=X&ved=0ahUKEwjst5n9i9DZAhWK7FMKHZtzDmgQ6AEIazAE#v=onepage&q=column%20tipos%20sqlalchemy&f=false
+#http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html
+
+curl http://localhost:5000/usuarios
+curl http://localhost:5000/usuarios -v
+
+curl http://localhost:5000/usuarios -d "nome=Alice" -d "email=ass@gmail.com" -d "senha=123" -d "setor=1" -X POST -v
+
+curl http://localhost:5000/usuario/18 -d "nome=Alice" -d "email=sd@gmail.com" -d "senha=123" -d "setor=2" -X PUT -v
+
+curl http://localhost:5000/usuarios -d "nome=Alice" -d "email=ass@gmail.com" -d "senha=123" -d "setor=1" -X POST -v
+
+
+https://www.youtube.com/watch?v=hNzruwVPtCE&list=PLLjmbh6XPGK4ISY747FUHXEl9lBxre4mM&index=4
+
+Criar env com workon
+mkvirtualenv SGPL --python=/usr/bin/python3.5

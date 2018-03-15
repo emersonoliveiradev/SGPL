@@ -1,0 +1,22 @@
+{% include 'base/head.html' %}
+{% include 'base/header.html' %}
+{% include 'base/nav_bar.html' %}
+
+    {% block content %}
+    <div class="col-md-3 col-md-offset-4">
+        <form action="/cadastrar-fornecedor-efetuar" method="POST">
+            <div class="form-group">
+                <label>Cadastrar Fornecedor</label>
+                {{ form.razaoSocial(class="form-control", placeholder="Insira a razão social do Fornecedor") }}
+                {{ form.nomeFantasia(class="form-control", placeholder="Insira o nome fantasia do Fornecedor") }}
+                {{ form.email(class="form-control", placeholder="Insira o email do Fornecedor") }}
+                {{ form.cnpj(class="form-control", placeholder="Insira o cnpj do Fornecedor") }}
+                {{ form.telefone(class="form-control", placeholder="Insira o telefone do Fornecedor") }}
+            </div>
+
+            <button type="submit" class="btn btn-default">Enviar</button>
+        </form>
+    </div>
+    {% endblock%}
+
+{% include 'base/footer.html' %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Sistema Licitar</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+  </head>
+  <body>
+      <p>
+          {% for message in get_flashed_messages() %}
+            {{ message }}
+          {% endfor %}
+      </p>
+
+      APP
