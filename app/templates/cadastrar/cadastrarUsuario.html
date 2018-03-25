@@ -4,13 +4,14 @@
 
     {% block content %}
     <div class="col-md-3 col-md-offset-4">
-        <form action="/cadastrar-usuario-efetuar" method="POST">
+        <form action="/api/v1/usuarios" method="POST">
             <div class="form-group">
                 <label>Cadastrar Usuario</label>
-                {{ form.nome(class="form-control", placeholder="Insira o nome do Usuário") }}
-                {{ form.email(class="form-control", placeholder="Insira o email do Usuário") }}
-                {{ form.senha(class="form-control", placeholder="Insira a senha do Usuário") }}
-                {{ form.setor(class="form-control", placeholder="Insira o nome do Setor") }}
+                {{ data[0].nome(class="form-control", placeholder="Insira o nome do Usuário") }}
+                {{ data[0].email(class="form-control", placeholder="Insira o email do Usuário") }}
+                {{ data[0].senha(class="form-control", placeholder="Insira a senha do Usuário") }}
+                {{ data[0].setor(class="form-control", placeholder="Insira o nome do Setor") }}
+                {{ data[0].tipo(class="form-control", placeholder="Insira o tipo") }}
             </div>
 
             <button type="submit" class="btn btn-default">Enviar</button>

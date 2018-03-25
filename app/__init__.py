@@ -27,6 +27,6 @@ mysql.init_app(app)
 from app import  views
 #from app.models import Setor
 #from app.models import Usuario
-from app.models.tables import Setor, Usuario
-from app.models import forms
+#from app.models.tables import Setor, Usuario
+#from app.models import forms
 from app.controllers import default_routes

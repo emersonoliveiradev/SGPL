@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
 from flask import redirect, url_for, session, flash, session
 from app import app, db
-from app.models.forms import LoginForm, ProdutoForm
+from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm
 #para o login
 from app.models.tables import Usuario
 
@@ -56,3 +56,15 @@ def logout():
     flash("Voce precisa estar logado!")
     #session.pop['logged_in', None]
     return redirect(url_for('login'))
+
+
+
+@app.route("/cadastrar-setor")
+@app.route("/cadastrar-usuario")
+def cadastrar_usuario():
+    form_usuario = UsuarioForm()
+    form_setor = SetorForm()
+    data = {}
+    data[0] = form_usuario
+    data[1] = form_setor
+    return render_template('cadastrar/cadastrarUsuario.html', data=data)

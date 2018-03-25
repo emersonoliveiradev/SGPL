@@ -3,18 +3,23 @@
 {% include 'base/nav_bar.html' %}
 
     {% block content %}
-    <div class="col-md-3 col-md-offset-4">
-        <form action="/cadastrar-usuario-efetuar" method="POST">
-            <div class="form-group">
-                <label>Cadastrar Usuario</label>
-                {{ form.nome(class="form-control", placeholder="Insira o nome do Usuário") }}
-                {{ form.email(class="form-control", placeholder="Insira o email do Usuário") }}
-                {{ form.senha(class="form-control", placeholder="Insira a senha do Usuário") }}
-                {{ form.setor(class="form-control", placeholder="Insira o nome do Setor") }}
-            </div>
+        parser = reqparse.RequestParser()
+        parser.add_argument('nome', required=True)
+        parser.add_argument('email', required=True)
+        parser.add_argument('senha', required=True)
+        parser.add_argument('setor', type=int, required=True)
+        parser.add_argument('tipo', type=int, required=True)
+        args = parser.parse_args()
 
-            <button type="submit" class="btn btn-default">Enviar</button>
-        </form>
+        if not 'nome' in args or not 'email' in args or not 'senha' in args or not 'setor' in args or not 'tipo' in args:
+            # we return bad request since we require name and color
+            return {'message': 'Missing required parameters.'}, 400
+
+        new_usuario = Usuario(nome=args['nome'], email=args['email'], senha=args['senha'], setor=args['setor'], tipo=args['tipo'])
+        db.session.add(new_usuario)
+        db.session.commit()
+        usuario = new_usuario # Ajeito ;/
+        return {new_usuario.id: {'nome': usuario.nome, 'email': usuario.senha, 'senha': usuario.senha, 'setor': usuario.setor, 'tipo': usuario.tipo}}, 201
     </div>
     {% endblock%}
 
