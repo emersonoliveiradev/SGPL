@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
 from flask import redirect, url_for, session, flash, session
 from app import app, db
-from app.models.forms import LoginForm
+from app.models.forms import LoginForm, ProdutoForm
 #para o login
 from app.models.tables import Usuario
 
@@ -12,10 +12,9 @@ from app.models.tables import Usuario
 @app.route("/index")
 @app.route("/home")
 def index():
-    flash("Bem Vindo ao SGPL")
-    return render_template('index.html')
-
-
+    produto_form = ProdutoForm()
+    #flash("Bem Vindo ao SGPL")
+    return render_template('index.html', produto_form = produto_form)
 
 
 @app.route("/logger", methods=['POST'])
@@ -44,6 +43,7 @@ def logger2():
 
     return render_template('index.html', error=error)
 '''
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

@@ -11,8 +11,18 @@ curl http://localhost:5000/usuario/18 -d "nome=Alice" -d "email=sd@gmail.com" -d
 
 curl http://localhost:5000/usuarios -d "nome=Alice" -d "email=ass@gmail.com" -d "senha=123" -d "setor=1" -X POST -v
 
+python3 run.py db init # Cria a pasta migrations
+
+python3 run.py db migrate
+python3 run.py db upgrade
+
 
 https://www.youtube.com/watch?v=hNzruwVPtCE&list=PLLjmbh6XPGK4ISY747FUHXEl9lBxre4mM&index=4
 
 Criar env com workon
 mkvirtualenv SGPL --python=/usr/bin/python3.5
+https://www.youtube.com/watch?v=ObLZZsGr_6s
+
+Tutorial --- Ver urgente
+https://blog.pythonanywhere.com/121/
+https://blog.pythonanywhere.com/158/

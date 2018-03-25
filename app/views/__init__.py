@@ -105,8 +105,8 @@ class SetoresListResource(Resource):
 
 
 #Resources
-api.add_resource(SetoresResource, '/setor/<setor_id>')
-api.add_resource(SetoresListResource, '/setores')
+api.add_resource(SetoresResource, '/api/v1/setor/<setor_id>')
+api.add_resource(SetoresListResource, '/api/v1/setores')
 
-api.add_resource(UsuariosResource, '/usuario/<usuario_id>')
-api.add_resource(UsuariosListResource, '/usuarios')
+api.add_resource(UsuariosResource, '/api/v1/usuario/<usuario_id>')
+api.add_resource(UsuariosListResource, '/api/v1/usuarios')

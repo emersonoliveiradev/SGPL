@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
     username = StringField("username", validators=[DataRequired()])
-    #poralidators=[DataRequired()])
+    password = StringField("password", validators=[DataRequired()])
     remember_me = BooleanField("remember_me")
 
 class SetorForm(FlaskForm):

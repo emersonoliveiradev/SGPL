@@ -29,6 +29,7 @@ class Usuario(db.Model):
     senha = db.Column(db.String(50))
     setor = db.Column(db.Integer, db.ForeignKey('setores.id'))
     tipo = db.Column(db.Integer)
+    tipo2 = db.Column(db.Integer)
 
     #setor = db.relationship('Setor', foreign_keys=setor.id)
 
