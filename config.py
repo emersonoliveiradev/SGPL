@@ -18,3 +18,4 @@ SECRET_KEY = 'chavequalquer'
 #app.config['MYSQL_DATABASE_PASSWORD'] = 'jay'
 #app.config['MYSQL_DATABASE_DB'] = 'BucketList'
 #app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+

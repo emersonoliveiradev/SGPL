@@ -8,7 +8,7 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField("remember_me")
 
 class SetorForm(FlaskForm):
-    nomeSetor = StringField("nomeSetor", validators=[DataRequired()])
+    nome = StringField("nome", validators=[DataRequired()])
 
 class UsuarioForm(FlaskForm):
     nome = StringField("nome", validators=[DataRequired()])
@@ -22,8 +22,8 @@ class ProdutoForm(FlaskForm):
     catmat = StringField("catmat", validators=[DataRequired()])
 
 class FornecedorForm(FlaskForm):
-    razaoSocial = StringField("razaoSocial", validators=[DataRequired()])
-    nomeFantasia = StringField("nomeFantasia", validators=[DataRequired()])
+    razao_social = StringField("razao_social", validators=[DataRequired()])
+    nome_fantasia = StringField("nome_fantasia", validators=[DataRequired()])
     email = StringField("email", validators=[DataRequired()])
     cnpj = StringField("cnpj", validators=[DataRequired()])
     telefone = StringField("telefone", validators=[DataRequired()])

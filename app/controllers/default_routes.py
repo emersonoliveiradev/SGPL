@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
 from flask import redirect, url_for, session, flash, session
 from app import app, db
-from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm
+from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm, FornecedorForm
 #para o login
 from app.models.tables import Usuario
 
@@ -64,7 +64,9 @@ def logout():
 def cadastrar_usuario():
     form_usuario = UsuarioForm()
     form_setor = SetorForm()
+    form_fornecedor = FornecedorForm()
     data = {}
     data[0] = form_usuario
     data[1] = form_setor
+    data[2] = form_fornecedor
     return render_template('cadastrar/cadastrarUsuario.html', data=data)
