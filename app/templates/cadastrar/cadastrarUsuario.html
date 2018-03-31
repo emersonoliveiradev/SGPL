@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-md-3">
-                <form action="/api/v1/fornecedores" method="POST">
+                <form action="/cadastrar-fornecedores" method="POST">
                     <div class="form-group">
                         <label>Cadastrar Fornecedores</label>
                         {{ data[2].razao_social(class="form-control", placeholder="Insira a Razão Social") }}
@@ -37,6 +37,18 @@
                         {{ data[2].email(class="form-control", placeholder="Insira o email do fornecedor") }}
                         {{ data[2].cnpj(class="form-control", placeholder="Insira o cnpj") }}
                         {{ data[2].telefone(class="form-control", placeholder="Insira o telefone") }}
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                </form>
+        </div>
+        <div>
+        <div class="col-md-3">
+                <form action="/cadastrar-produto" method="POST">
+                    <div class="form-group">
+                        <label>Cadastrar Produto</label>
+                        {{ data[3].nome(class="form-control", placeholder="Insira o nome do Produto") }}
+                        {{ data[3].catmat(class="form-control", placeholder="Insira o número do CatMat") }}
+                        <!--Colocar aqui um select com os nomes dos fornecedores-->
                     </div>
                     <button type="submit" class="btn btn-default">Enviar</button>
                 </form>

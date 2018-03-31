@@ -4,7 +4,7 @@ from app import app, db, lm
 from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm, FornecedorForm
 #para o login
 from flask_login import login_user, logout_user, login_required
-from app.models.tables import Usuario, Setor, Fornecedor
+from app.models.tables import Usuario, Setor, Fornecedor, Produto
 
 #from app.models.tables import Setor
 #from app.models.tables import Usuario
@@ -66,7 +66,8 @@ def cadastrar_usuario():
     form_usuario = UsuarioForm()
     form_setor = SetorForm()
     form_fornecedor = FornecedorForm()
-    data = [form_usuario, form_setor, form_fornecedor]
+    form_produto = ProdutoForm()
+    data = [form_usuario, form_setor, form_fornecedor, form_produto]
     return render_template('cadastrar/cadastrarUsuario.html', data=data)
 
 
@@ -82,7 +83,6 @@ def cadastrar_setor():
             db.session.commit()
             flash("Cadastro de setor realizado com sucesso!")
             return redirect(url_for('cadastrar_usuario'))
-
     return render_template('cadastrar/cadastrarUsuario.html')
 
 
@@ -101,5 +101,19 @@ def cadastrar_fornecedor():
             db.session.commit()
             flash("Cadastro de fornecedor realizado com sucesso!")
             return redirect(url_for('cadastrar_usuario'))
-
     return render_template('cadastrar/cadastrarUsuario.html')
+
+@app.route("/cadastrar-produto", methods=["GET", "POST"])
+def cadastrar_produto():
+    if request.method == "POST":
+        nome = request.form.get("nome")
+        catmat = request.form.get("catmat")
+
+        if nome and catmat:
+            produto = Produto(nome, catmat)
+            db.session.add(produto)
+            db.session.commit()
+            flash("Cadastro de produto realizado com sucesso!")
+            return redirect(url_for('cadastrar_usuario'))
+    return render_template('cadastrar/cadastrarProduto.html')
+
