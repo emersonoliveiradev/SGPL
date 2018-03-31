@@ -9,7 +9,7 @@ class Setor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50))
 
-    def __init__(self, nome, catmat):
+    def __init__(self, nome):
         self.nome = nome
 
 
@@ -58,7 +58,6 @@ class Produto(db.Model):
     nome = db.Column(db.String(50))
     catmat = db.Column(db.String(50), unique=True)
 
-    #Set required / initialize a product
     def __init__(self, nome, catmat):
         self.nome = nome
         self.catmat = catmat
@@ -71,16 +70,15 @@ class Fornecedor(db.Model):
     __tablename__ = "fornecedores"
 
     id = db.Column(db.Integer, primary_key=True)
-    razaoSocial = db.Column(db.String(50))
-    nomeFantasia = db.Column(db.String(50))
+    razao_social = db.Column(db.String(50))
+    nome_fantasia = db.Column(db.String(50))
     email = db.Column(db.String(50))
     cnpj = db.Column(db.String(11))
     telefone = db.Column(db.String(20))
 
-    #Set required / initialize a
-    def __init__(self, razaoSocial, nomeFantasia, email, cnpj, telefone):
-        self.razaoSocial = razaoSocial
-        self.nomeFantasia = nomeFantasia
+    def __init__(self, razao_social, nome_fantasia, email, cnpj, telefone):
+        self.razao_social = razao_social
+        self.nome_fantasia = nome_fantasia
         self.email = email
         self.cnpj = cnpj
         self.telefone = telefone
@@ -157,7 +155,6 @@ class Pedido_tem_Item_do_Pedido(db.Model):
     pedido = db.Column(db.Integer, db.ForeignKey('pedidos.id'))
     itens_do_pedido = db.Column(db.Integer, db.ForeignKey('itens_do_pedido.id'))
 
-
     def __init__(self, status, pedido, item_do_pedido):
         self.status = status
         self.pedido = pedido
@@ -196,7 +193,6 @@ class Item_do_Pregao(db.Model):
     pregao = db.Column(db.Integer, db.ForeignKey('pregoes.id'))
     produto = db.Column(db.Integer, db.ForeignKey('produtos.id'))
     fornecedor = db.Column(db.Integer, db.ForeignKey('fornecedores.id'))
-
 
     def __init__(self, data, quantidade, valor_referencia, pregao, produto, fornecedor):
         self.data = data
