@@ -9,9 +9,8 @@ class Setor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50))
 
-    def __init__(self, nome):
+    def __init__(self, nome, catmat):
         self.nome = nome
-
 
 
 ###########################################usuarios
@@ -25,10 +24,8 @@ class Usuario(db.Model):
     senha = db.Column(db.String(50))
     tipo = db.Column(db.Integer)
     setor = db.Column(db.Integer, db.ForeignKey('setores.id'))
-
     #setor = db.relationship('Setor', foreign_keys=setor.id)
 
-    #Set required / initialize an user
     def __init__(self, nome, email, senha, tipo, setor):
         self.nome = nome
         self.email = email
@@ -36,7 +33,21 @@ class Usuario(db.Model):
         self.tipo = tipo
         self.setor = setor
 
+#Métodos para gerenciamento do Flask-login
+    @property
+    def is_authenticated(self):
+        return True
 
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
 
 ###########################################produtos
 class Produto(db.Model):

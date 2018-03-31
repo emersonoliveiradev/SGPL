@@ -6,11 +6,11 @@ from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
 from flask_login import LoginManager
 
-#from marshmallow import Schema
 
 #Instância do arquivo de configuração
 app = Flask(__name__)
 app.config.from_object('config')
+
 
 #Instância do banco de dados
 db = SQLAlchemy(app)
@@ -26,6 +26,7 @@ api = Api(app)
 
 #Instância da Login-Manager
 lm = LoginManager(app)
+lm.init_app(app)
 
 #Não esquecer dessa linha, sem ela as tabelas não são criadas com o migrate
 from app import  views

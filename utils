@@ -5,14 +5,21 @@
 curl http://localhost:5000/usuarios
 curl http://localhost:5000/usuarios -v
 
-curl http://localhost:5000/usuarios -d "nome=Alice" -d "email=ass@gmail.com" -d "senha=123" -d "setor=1" -X POST -v
+curl http://localhost:9000/api/v1/usuario -d "nome=Alice" -d "email=ass@gmail.com" -d "senha=123" -d "setor=1" -X POST -v
 
 curl http://localhost:5000/usuario/18 -d "nome=Alice" -d "email=sd@gmail.com" -d "senha=123" -d "setor=2" -X PUT -v
 
 curl http://localhost:5000/usuarios -d "nome=Alice" -d "email=ass@gmail.com" -d "senha=123" -d "setor=1" -X POST -v
 
-python3 run.py db init # Cria a pasta migrations
+curl http://localhost:9000/api/v1/setores -d "nome=Financeiro" -d -X POST -v
 
+
+
+mkvirtualenv NOME
+workon NOME
+mkvirtualenv nome --python=/usr/bin/python3.5
+
+python3 run.py db init # Cria a pasta migrations
 python3 run.py db migrate
 python3 run.py db upgrade
 
