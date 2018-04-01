@@ -5,7 +5,7 @@ from app import app, db, lm
 from flask_login import login_user, logout_user, login_required
 
 from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm, FornecedorForm, PedidoForm
-from app.models.tables import Usuario, Setor, Fornecedor, Produto, Pedido
+from app.models.tables import Usuario, Setor, Fornecedor, Produto, Pedido, Item_do_Pedido
 
 
 @lm.user_loader
@@ -128,11 +128,18 @@ def cadastrar_pedido():
         data = request.form.get("data")
         usuario = request.form.get("usuario")
         requisitante = request.form.get("requisitante")
+        #item_pedido
+        quantidade = request.form.get("quantidade")
+        valor_referencia = request.form.get("valor_referencia")
+        pregao = request.form.get("pregao")
+        produto = request.form.get("produto")
+        fornecedor = request.form.get("fornecedor")
 
-        if data and usuario and requisitante:
+        if data and usuario and requisitante and quantidade and valor_referencia and pregao and produto and fornecedor:
             pedido = Pedido(data, usuario, requisitante)
             db.session.add(pedido)
             db.session.commit()
+            db.session.add()
             flash("Cadastro de pedido realizado com sucesso!")
             return redirect(url_for('cadastrar_usuario'))
     return render_template('cadastrar/cadastrarUsuario.html')
