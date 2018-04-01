@@ -58,6 +58,18 @@
                         <label>Cadastrar Pedido</label>
                         {{ data[4].csrf_token }}
                         {{ data[4].usuario }}
+                        {{ data[4].requisitante }}
+                        {{ data[4].fornecedor1 }}
+                        {{ data[4].fornecedor2 }}
+                        {{ data[4].fornecedor3 }}
+                        {{ data[4].valor_fornecedor1 }}
+                        {{ data[4].valor_fornecedor2 }}
+                        {{ data[4].valor_fornecedor3 }}
+                        {{ data[4].produto }}
+                        <div class="invisible">
+                            {{ data[4].pedido }}
+                            {{ data[4].data }}
+                        </div>
                         <!--Colocar aqui um select com os nomes dos fornecedores-->
                     </div>
                     {{ data[4].enviar(class="btn btn-default") }}

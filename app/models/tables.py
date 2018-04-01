@@ -48,7 +48,7 @@ class Usuario(db.Model):
         return str(self.id)
 
     def __repr__(self):
-        return '[<Usuario {}>]'.format(self.nome)
+        return '<Usuario {}>'.format(self.nome)
 
 
 
@@ -78,7 +78,7 @@ class Fornecedor(db.Model):
     email = db.Column(db.String(50))
     cnpj = db.Column(db.String(11))
     telefone = db.Column(db.String(20))
-
+    #Criar atributo booleano "ativo"
     def __init__(self, razao_social, nome_fantasia, email, cnpj, telefone):
         self.razao_social = razao_social
         self.nome_fantasia = nome_fantasia
