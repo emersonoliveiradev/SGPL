@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
 from flask_login import LoginManager
+from .models import *
 
 
 #Instância do arquivo de configuração
@@ -31,7 +32,4 @@ lm.init_app(app)
 #Não esquecer dessa linha, sem ela as tabelas não são criadas com o migrate
 from app import  views
 from app.controllers import default_routes
-#from app.models import Setor
-#from app.models import Usuario
-#from app.models.tables import Setor, Usuario
-#from app.models import forms
+

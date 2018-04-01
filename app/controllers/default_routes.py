@@ -1,13 +1,11 @@
-from flask import Flask, render_template, request
-from flask import redirect, url_for, session, flash
+from flask import render_template, request
+from flask import redirect, url_for, flash
 from app import app, db, lm
-from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm, FornecedorForm
 #para o login
 from flask_login import login_user, logout_user, login_required
-from app.models.tables import Usuario, Setor, Fornecedor, Produto
 
-#from app.models.tables import Setor
-#from app.models.tables import Usuario
+from app.models.forms import LoginForm, ProdutoForm, UsuarioForm, SetorForm, FornecedorForm, PedidoForm
+from app.models.tables import Usuario, Setor, Fornecedor, Produto, Pedido
 
 
 @lm.user_loader
@@ -67,7 +65,9 @@ def cadastrar_usuario():
     form_setor = SetorForm()
     form_fornecedor = FornecedorForm()
     form_produto = ProdutoForm()
-    data = [form_usuario, form_setor, form_fornecedor, form_produto]
+    form_pedido = PedidoForm()
+
+    data = [form_usuario, form_setor, form_fornecedor, form_produto, form_pedido]
     return render_template('cadastrar/cadastrarUsuario.html', data=data)
 
 
@@ -115,5 +115,24 @@ def cadastrar_produto():
             db.session.commit()
             flash("Cadastro de produto realizado com sucesso!")
             return redirect(url_for('cadastrar_usuario'))
-    return render_template('cadastrar/cadastrarProduto.html')
+    return render_template('cadastrar/cadastrarUsuario.html')
 
+
+
+
+
+
+@app.route("/cadastrar-pedido", methods=["GET", "POST"])
+def cadastrar_pedido():
+    if request.method == "POST":
+        data = request.form.get("data")
+        usuario = request.form.get("usuario")
+        requisitante = request.form.get("requisitante")
+
+        if data and usuario and requisitante:
+            pedido = Pedido(data, usuario, requisitante)
+            db.session.add(pedido)
+            db.session.commit()
+            flash("Cadastro de pedido realizado com sucesso!")
+            return redirect(url_for('cadastrar_usuario'))
+    return render_template('cadastrar/cadastrarUsuario.html')

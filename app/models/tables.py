@@ -1,6 +1,4 @@
 from app import db
-from flask import Flask, request, jsonify
-import requests as req
 
 ###########################################setores
 class Setor(db.Model):
@@ -48,6 +46,11 @@ class Usuario(db.Model):
 
     def get_id(self):
         return str(self.id)
+
+    def __repr__(self):
+        return '[<Usuario {}>]'.format(self.nome)
+
+
 
 ###########################################produtos
 class Produto(db.Model):

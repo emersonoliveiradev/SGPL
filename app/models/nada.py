@@ -104,3 +104,40 @@ def usuario_all():
     r = req.get(url+"usuario", auth=auth)
     print(r)
     return jsonify()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+requisitante = PasswordField("requisitante", validators=[DataRequired()])
+    quantidade = StringField("quantidade", validators=[DataRequired()])
+    fornecedor1 = StringField("fornecedor1", validators=[DataRequired()])
+    fornecedor2 = StringField("fornecedor2", validators=[DataRequired()])
+    fornecedor3 = StringField("fornecedor3", validators=[DataRequired()])
+    valor_fornecedor1 = StringField("valor_fornecedor1", validators=[DataRequired()])
+    valor_fornecedor2 = StringField("valor_fornecedor2", validators=[DataRequired()])
+    valor_fornecedor3 = StringField("valor_fornecedor3", validators=[DataRequired()])
+    pedido = StringField("pedido", validators=[DataRequired()])
+    produto = StringField("produto", validators=[DataRequired()])
+
+
+
+
+
+
+
+
+
