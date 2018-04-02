@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-md-3">
-                <form action="/cadastrar-fornecedores" method="POST">
+                <form action="/cadastrar-fornecedor" method="POST">
                     <div class="form-group">
                         <label>Cadastrar Fornecedores</label>
                         {{ data[2].razao_social(class="form-control", placeholder="Insira a Razão Social") }}
@@ -59,6 +59,7 @@
                         {{ data[4].csrf_token }}
                         {{ data[4].usuario }}
                         {{ data[4].requisitante }}
+                        {{ data[4].quantidade }}
                         {{ data[4].fornecedor1 }}
                         {{ data[4].fornecedor2 }}
                         {{ data[4].fornecedor3 }}
@@ -66,10 +67,7 @@
                         {{ data[4].valor_fornecedor2 }}
                         {{ data[4].valor_fornecedor3 }}
                         {{ data[4].produto }}
-                        <div class="invisible">
-                            {{ data[4].pedido }}
-                            {{ data[4].data }}
-                        </div>
+                        {{ data[4].data }}
                         <!--Colocar aqui um select com os nomes dos fornecedores-->
                     </div>
                     {{ data[4].enviar(class="btn btn-default") }}

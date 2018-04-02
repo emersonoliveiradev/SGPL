@@ -45,7 +45,6 @@ class FornecedorForm(FlaskForm):
 #https://stackoverflow.com/questions/49025345/flask-wtforms-queryselectfield-to-set-form-select-option-values
 class PedidoForm(FlaskForm):
     data = StringField(Date, default=datetime.date.today())
-    #data = StringField(DateTime, default=datetime.datetime.utcnow)
     usuario = QuerySelectField('Usuario', query_factory=lambda: Usuario.query.filter_by(tipo="1"),
                                get_label='nome', allow_blank=True,
                                blank_text=(u'Selecione um usuário'), get_pk=lambda x: x.id)
@@ -54,25 +53,25 @@ class PedidoForm(FlaskForm):
                                blank_text=('Selecione um requisitante'), get_pk=lambda x: x.id)
     #Item_do_Pedido
     quantidade = StringField("quantidade", validators=[DataRequired()])
-    fornecedor1 = QuerySelectField('Fornecedor', query_factory=lambda: Fornecedor.query.all(),
+    fornecedor1 = QuerySelectField('fornecedor', query_factory=lambda: Fornecedor.query.all(),
                                get_label='nome_fantasia', allow_blank=True,
                                blank_text=('Selecione um fornecedor (1)'), get_pk=lambda x: x.id)
-    fornecedor2 = QuerySelectField('Fornecedor', query_factory=lambda: Fornecedor.query.all(),
+    fornecedor2 = QuerySelectField('fornecedor', query_factory=lambda: Fornecedor.query.all(),
                                    get_label='nome_fantasia', allow_blank=True,
                                    blank_text=('Selecione um fornecedor (2)'), get_pk=lambda x: x.id)
-    fornecedor3 = QuerySelectField('Fornecedor', query_factory=lambda: Fornecedor.query.all(),
+    fornecedor3 = QuerySelectField('fornecedor', query_factory=lambda: Fornecedor.query.all(),
                                    get_label='nome_fantasia', allow_blank=True,
                                    blank_text=('Selecione um fornecedor (3)'), get_pk=lambda x: x.id)
     valor_fornecedor1 = StringField("valor_fornecedor1", validators=[DataRequired()])
     valor_fornecedor2 = StringField("valor_fornecedor2", validators=[DataRequired()])
     valor_fornecedor3 = StringField("valor_fornecedor3", validators=[DataRequired()])
-    produto = QuerySelectField('Produto', query_factory=lambda: Produto.query.all(),
-                               get_label='nome', allow_blank=True,
-                               blank_text=('Selecione um poduto'), get_pk=lambda x: 'id')
-    produto = QuerySelectField('Produto', query_factory=lambda: Produto.query.all(),
+    produto = QuerySelectField('produto', query_factory=lambda: Produto.query.all(),
                                    get_label='nome', allow_blank=True,
-                                   blank_text=('Selecione um poduto'), get_pk=lambda x: 'id')
+                                   blank_text=('Selecione um poduto'), get_pk=lambda x: x.id)
     enviar = SubmitField("Enviar")
+
+
+
 
 class PregaoForm(FlaskForm):
     quantidade = StringField("quantidade", validators=[DataRequired()])

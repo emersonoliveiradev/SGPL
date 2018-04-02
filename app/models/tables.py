@@ -132,10 +132,9 @@ class Item_do_Pedido(db.Model):
     valor_fornecedor1 = db.Column(db.Numeric)
     valor_fornecedor2 = db.Column(db.Numeric)
     valor_fornecedor3 = db.Column(db.Numeric)
-    pedido = db.Column(db.Integer, db.ForeignKey('pedidos.id'))
     produto = db.Column(db.Integer, db.ForeignKey('produtos.id'))
 
-    def __init__(self, quantidade, fornecedor1, fornecedor2, forncedor3, valor_forncedor1, valor_forncedor2, valor_forncedor3, pedido, produto):
+    def __init__(self, quantidade, fornecedor1, fornecedor2, forncedor3, valor_forncedor1, valor_forncedor2, valor_forncedor3, produto):
         self.quantidade = quantidade
         self.fornecedor1 = fornecedor1
         self.fornecedor2 = fornecedor2
@@ -143,7 +142,6 @@ class Item_do_Pedido(db.Model):
         self.valor_fornecedor1 = valor_forncedor1
         self.valor_fornecedor2 = valor_forncedor2
         self.valor_fornecedor3 = valor_forncedor3
-        self.pedido = pedido
         self.produto = produto
 
 

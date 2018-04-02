@@ -125,21 +125,44 @@ def cadastrar_produto():
 @app.route("/cadastrar-pedido", methods=["GET", "POST"])
 def cadastrar_pedido():
     if request.method == "POST":
+        print("Entrou1")
         data = request.form.get("data")
         usuario = request.form.get("usuario")
         requisitante = request.form.get("requisitante")
         #item_pedido
         quantidade = request.form.get("quantidade")
+        fornecedor1 = request.form.get("fornecedor1")
+        fornecedor2 = request.form.get("fornecedor2")
+        fornecedor3 = request.form.get("fornecedor3")
+        valor_fornecedor1 = request.form.get("valor_fornecedor1")
+        valor_fornecedor2 = request.form.get("valor_fornecedor2")
+        valor_fornecedor3 = request.form.get("valor_fornecedor3")
+        produto = request.form.get("produto")
+        print("Entrou2")
+        if produto:
+            print("Entrou3")
+        if data and usuario and requisitante and quantidade and fornecedor1 and fornecedor2 and fornecedor3 and valor_fornecedor1 and valor_fornecedor2 and valor_fornecedor3 and produto:
+            print("Entrou5")
+            pedido = Pedido(data, usuario, requisitante)
+            db.session.add(pedido)
+            db.session.commit()
+            flash("Cadastro de pedido1 realizado com sucesso!")
+            item_do_pedido = Item_do_Pedido(quantidade, fornecedor1, fornecedor2, fornecedor3, valor_fornecedor1, valor_fornecedor2, valor_fornecedor3, produto)
+            db.session.add(item_do_pedido)
+            db.session.commit()
+            flash("Cadastro de pedido2 realizado com sucesso!")
+            return redirect(url_for('cadastrar_usuario'))
+    return render_template('cadastrar/cadastrarUsuario.html')
+
+
+
+
+
+
+'''
+    quantidade = request.form.get("quantidade")
         valor_referencia = request.form.get("valor_referencia")
         pregao = request.form.get("pregao")
         produto = request.form.get("produto")
         fornecedor = request.form.get("fornecedor")
-
-        if data and usuario and requisitante and quantidade and valor_referencia and pregao and produto and fornecedor:
-            pedido = Pedido(data, usuario, requisitante)
-            db.session.add(pedido)
-            db.session.commit()
-            db.session.add()
-            flash("Cadastro de pedido realizado com sucesso!")
-            return redirect(url_for('cadastrar_usuario'))
-    return render_template('cadastrar/cadastrarUsuario.html')
+'''
